@@ -1,4 +1,4 @@
-# Onboarding Guide (New Developer / New Hire)
+# Getting Started
 
 This repository is a learning sandbox that mirrors a real-world **Sitecore headless** build:
 
@@ -104,7 +104,7 @@ This verifies:
 
 ## 6) First-day checklist
 
-If you were onboarding to a real client project, your Day 1 goals would be:
+If you’re new to this repo, these are the Day 1 goals I’d aim for:
 
 - [ ] Run the app locally (`npm install`, `npm run dev`)
 - [ ] Understand how routing maps to layout JSON (read docs 02 + 03)

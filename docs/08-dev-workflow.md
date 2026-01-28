@@ -1,6 +1,6 @@
 # Dev Workflow (How-to)
 
-This doc is written as an onboarding runbook.
+This is basically the workflow I use when working in this repo.
 
 ## Scripts
 
