@@ -114,7 +114,7 @@ export default function SiteHeader() {
         <button
           type="button"
           onClick={() => clearCart()}
-          className="hidden rounded-md border border-gray-300 px-3 py-1.5 text-sm text-gray-800 hover:bg-gray-50 dark:border-gray-700 dark:text-gray-100 dark:hover:bg-gray-900 sm:inline"
+          className="hidden rounded-md border border-gray-300 px-3 py-1.5 text-sm text-gray-800 hover:bg-gray-50 dark:border-gray-700 dark:text-gray-200 dark:hover:bg-gray-900 sm:inline"
         >
           Clear
         </button>

@@ -1,6 +1,22 @@
+@config "../../tailwind.config.js";
 @import "tailwindcss";
 
 /* You can keep globals minimal; Tailwind handles most styling. */
+
+@layer base {
+  html {
+    @apply bg-white text-gray-900;
+  }
+
+  html.dark {
+    @apply bg-gray-950 text-gray-100;
+  }
+
+  body {
+    @apply bg-inherit text-inherit;
+  }
+}
+
 html,
 body {
   height: 100%;

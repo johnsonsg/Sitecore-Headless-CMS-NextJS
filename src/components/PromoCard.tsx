@@ -39,7 +39,7 @@ export default function PromoCard({ rendering }: PromoCardProps) {
         </Typography>
 
         <div className="mt-4">
-          <Button component={Link} href={ctaHref} variant="contained">
+          <Button component={Link} href={ctaHref} variant="contained" disableElevation>
             {ctaText}
           </Button>
         </div>

@@ -23,7 +23,7 @@ export default function Hero({ rendering }: HeroProps) {
           {fields.title?.value ?? 'Untitled Hero'}
         </Typography>
         {fields.text?.value ? (
-          <Typography variant="body1" className="mt-3 text-gray-700">
+          <Typography variant="body1" className="mt-3 text-gray-700 dark:text-gray-200">
             {fields.text.value}
           </Typography>
         ) : null}
