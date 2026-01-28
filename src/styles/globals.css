@@ -1,0 +1,11 @@
+@import "tailwindcss";
+
+/* You can keep globals minimal; Tailwind handles most styling. */
+html,
+body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+}
