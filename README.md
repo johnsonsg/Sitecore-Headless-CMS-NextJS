@@ -11,6 +11,8 @@ npm install
 npm run dev
 ```
 
+To connect to a real Sitecore Layout Service later, copy `.env.example` to `.env.local` and set `SITECORE_MODE=sitecore`.
+
 Open:
 
 - `http://localhost:3000/`

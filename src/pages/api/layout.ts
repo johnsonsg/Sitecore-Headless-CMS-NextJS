@@ -1,18 +1,73 @@
 import type { NextApiRequest, NextApiResponse } from 'next';
-import type { LayoutServiceData } from '@/lib/sitecore/types';
+import type { ComponentRendering, Field, LayoutServiceData } from '@/lib/sitecore/types';
 
 function layoutForPath(path: string): LayoutServiceData {
   const routeName = path === '/' ? 'home' : path.replace(/^\//, '').replace(/\//g, '-');
 
-  const title =
-    path === '/'
-      ? 'Hello from a Mock Sitecore Layout Service'
-      : `Hello from ${path} (mock Sitecore)`;
+  const f = <T,>(value: T): Field<T> => ({ value });
 
-  const text =
-    path === '/'
-      ? 'This page is rendered from Sitecore-like JSON. Next step: swap this mock endpoint for real Sitecore Layout Service + the Sitecore JSS SDK.'
-      : 'In a real setup, this layout JSON comes from Sitecore and is editable by authors.';
+  const title = (() => {
+    if (path === '/') return 'Hello from a Mock Sitecore Layout Service';
+    if (path === '/about') return 'About this sandbox';
+    if (path === '/tickets') return 'Tickets (demo page)';
+    return `Hello from ${path} (mock Sitecore)`;
+  })();
+
+  const text = (() => {
+    if (path === '/') {
+      return 'This page is rendered from Sitecore-like JSON. Next step: swap this mock endpoint for real Sitecore Layout Service + the Sitecore JSS SDK.';
+    }
+    if (path === '/about') {
+      return 'This is a basic About page rendered through the catch-all route. The URL (/about) is “real”, and the content comes from layout JSON (mocking what Sitecore would return).';
+    }
+    if (path === '/tickets') {
+      return 'Another route driven by layout JSON. In a real Sitecore build, authors could add/remove components in placeholders without code changes.';
+    }
+    return 'In a real setup, this layout JSON comes from Sitecore and is editable by authors.';
+  })();
+
+  const main: ComponentRendering[] =
+    path === '/about'
+      ? [
+          {
+            uid: `hero-${routeName}`,
+            componentName: 'Hero',
+            fields: {
+              title: f(title),
+              text: f(text),
+            },
+          },
+          {
+            uid: `promo-${routeName}`,
+            componentName: 'PromoCard',
+            fields: {
+              headline: f('This component is also React'),
+              body: f(
+                'We did not create an about.tsx page. We added this component to the layout JSON for /about, and Next.js rendered it server-side by mapping componentName → a real React component.'
+              ),
+              ctaText: f('View tickets'),
+              ctaHref: f('/tickets'),
+            },
+          },
+          {
+            uid: 'featurelist-about',
+            componentName: 'FeatureList',
+            fields: {
+              title: { value: 'Why headless?' },
+              items: { value: ['Sitecore authors content', 'Next.js renders UI', 'SSR for SEO/perf'] },
+            },
+          },
+        ]
+      : [
+          {
+            uid: `hero-${routeName}`,
+            componentName: 'Hero',
+            fields: {
+              title: f(title),
+              text: f(text),
+            },
+          },
+        ];
 
   return {
     sitecore: {
@@ -23,16 +78,7 @@ function layoutForPath(path: string): LayoutServiceData {
       route: {
         name: routeName,
         placeholders: {
-          main: [
-            {
-              uid: `hero-${routeName}`,
-              componentName: 'Hero',
-              fields: {
-                title: { value: title },
-                text: { value: text },
-              },
-            },
-          ],
+          main,
         },
       },
     },
