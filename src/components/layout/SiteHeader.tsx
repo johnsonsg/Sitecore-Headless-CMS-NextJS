@@ -38,11 +38,16 @@ export default function SiteHeader() {
   };
 
   return (
-    <AppBar position="sticky" color="transparent" elevation={0} className="border-b border-gray-200 bg-white/80 backdrop-blur dark:border-gray-800 dark:bg-gray-950/70">
+    <AppBar
+      position="sticky"
+      color="transparent"
+      elevation={0}
+      className="border-b border-gray-300 bg-white/95 text-gray-900 backdrop-blur dark:border-gray-700 dark:bg-gray-950/90 dark:text-gray-100"
+    >
       <Toolbar className="mx-auto w-full max-w-225 gap-3 px-4">
         <div className="flex min-w-0 items-center gap-3">
           <Link href="/" className="no-underline">
-            <Typography variant="h6" component="span" className="truncate font-semibold text-gray-900 dark:text-gray-100">
+            <Typography variant="h6" component="span" className="truncate font-semibold text-gray-900 dark:text-gray-500">
               Headless Sitecore Sandbox
             </Typography>
           </Link>
@@ -51,7 +56,7 @@ export default function SiteHeader() {
         <div className="flex-1" />
 
         <div className="hidden items-center gap-2 sm:flex">
-          <Typography variant="body2" className="text-gray-600 dark:text-gray-300">
+          <Typography variant="body2" className="text-gray-800 dark:text-gray-500">
             Park
           </Typography>
           <Select
@@ -88,7 +93,7 @@ export default function SiteHeader() {
         <button
           type="button"
           onClick={() => clearCart()}
-          className="hidden rounded-md border border-gray-300 px-3 py-1.5 text-sm text-gray-800 hover:bg-gray-50 dark:border-gray-700 dark:text-gray-100 dark:hover:bg-gray-900 sm:inline"
+          className="hidden rounded-md border border-gray-300 px-3 py-1.5 text-sm text-gray-800 hover:bg-gray-50 dark:border-gray-700 dark:text-gray-500 dark:hover:bg-gray-900 sm:inline"
         >
           Clear
         </button>
