@@ -2,7 +2,7 @@ import * as React from 'react';
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import Typography from '@mui/material/Typography';
-import type { ComponentRendering, Field } from '@/lib/sitecore/types';
+import type { ComponentRendering, Field } from '@/lib/cms/types';
 
 type HeroFields = {
   title?: Field<string>;
@@ -23,7 +23,7 @@ export default function Hero({ rendering }: HeroProps) {
           {fields.title?.value ?? 'Untitled Hero'}
         </Typography>
         {fields.text?.value ? (
-          <Typography variant="body1" className="mt-3 text-gray-700 dark:text-gray-200">
+          <Typography variant="body1" className="mt-3 pt-4 text-gray-700 dark:text-gray-200">
             {fields.text.value}
           </Typography>
         ) : null}

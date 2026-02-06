@@ -2,7 +2,7 @@ import * as React from 'react';
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import Typography from '@mui/material/Typography';
-import type { ComponentRendering, Field } from '@/lib/sitecore/types';
+import type { ComponentRendering, Field } from '@/lib/cms/types';
 
 type FeatureListFields = {
   title?: Field<string>;

@@ -4,7 +4,7 @@ import CardContent from '@mui/material/CardContent';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import Link from 'next/link';
-import type { ComponentRendering, Field } from '@/lib/sitecore/types';
+import type { ComponentRendering, Field } from '@/lib/cms/types';
 
 type PromoCardFields = {
   headline?: Field<string>;

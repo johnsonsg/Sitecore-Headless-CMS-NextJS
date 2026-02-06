@@ -1,11 +1,11 @@
 import * as React from 'react';
 import type { GetServerSideProps } from 'next';
-import type { LayoutServiceData } from '@/lib/sitecore/types';
-import { Placeholder } from '@/components/sitecore/Placeholder';
-import { fetchLayoutData } from '@/lib/sitecore/fetchLayoutData';
+import type { CmsLayoutData } from '@/lib/cms/types';
+import { Placeholder } from '@/components/cms/Placeholder';
+import { fetchLayoutData } from '@/lib/cms/fetchLayoutData';
 
 type PageProps = {
-  layoutData: LayoutServiceData;
+  layoutData: CmsLayoutData;
   path: string;
 };
 
@@ -15,7 +15,7 @@ export const getServerSideProps: GetServerSideProps<PageProps> = async (context)
 
   const layoutData = await fetchLayoutData({ path, context });
 
-  if (!layoutData?.sitecore?.route) {
+  if (!layoutData?.cms?.route) {
     return { notFound: true };
   }
 
@@ -23,7 +23,7 @@ export const getServerSideProps: GetServerSideProps<PageProps> = async (context)
 };
 
 export default function RoutePage({ layoutData, path }: PageProps) {
-  const route = layoutData.sitecore.route;
+  const route = layoutData.cms.route;
 
   if (!route) return null;
 

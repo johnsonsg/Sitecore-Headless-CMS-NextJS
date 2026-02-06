@@ -1,6 +1,6 @@
 import * as React from 'react';
-import { getComponent } from '@/lib/sitecore/componentFactory';
-import type { ComponentRendering, RouteData } from '@/lib/sitecore/types';
+import { getComponent } from '@/lib/cms/componentFactory';
+import type { ComponentRendering, RouteData } from '@/lib/cms/types';
 
 type PlaceholderProps = {
   name: string;

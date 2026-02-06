@@ -1,7 +1,7 @@
 import type { NextApiRequest, NextApiResponse } from 'next';
-import type { ComponentRendering, Field, LayoutServiceData } from '@/lib/sitecore/types';
+import type { CmsLayoutData, ComponentRendering, Field } from '@/lib/cms/types';
 
-function layoutForPath(path: string): LayoutServiceData {
+function layoutForPath(path: string): CmsLayoutData {
   const routeName = path === '/' ? 'home' : path.replace(/^\//, '').replace(/\//g, '-');
 
   const f = <T,>(value: T): Field<T> => ({ value });
@@ -70,10 +70,9 @@ function layoutForPath(path: string): LayoutServiceData {
         ];
 
   return {
-    sitecore: {
+    cms: {
       context: {
         language: 'en',
-        site: 'website',
       },
       route: {
         name: routeName,
@@ -97,7 +96,7 @@ export default function handler(req: NextApiRequest, res: NextApiResponse) {
   // Small demo: pretend only a few routes exist.
   const allowed = new Set(['/', '/about', '/tickets']);
   if (!allowed.has(path)) {
-    const notFound: LayoutServiceData = { sitecore: { context: {}, route: null } };
+    const notFound: CmsLayoutData = { cms: { context: {}, route: null } };
     res.status(200).json(notFound);
     return;
   }
